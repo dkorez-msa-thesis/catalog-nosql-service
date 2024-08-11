@@ -19,10 +19,12 @@ public class ProductDocument {
 
     @BsonProperty("category_id")
     private Long categoryId;
-    @BsonProperty("category_name")
+    @BsonProperty("categoryName")
     private String categoryName;
-    @BsonProperty("brand_name")
+    @BsonProperty("brandName")
     private String brand;
-    private List<SpecificationDocument> specifications;
+    @BsonProperty("specs")
+    private List<SpecificationDocument> specs;
+    @BsonProperty("tags")
     private List<TagDocument> tags;
 }

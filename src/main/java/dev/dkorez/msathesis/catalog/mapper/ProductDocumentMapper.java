@@ -15,7 +15,7 @@ public class ProductDocumentMapper {
 
         BrandDto brand = new BrandDto();
         brand.setName(entity.getBrand());
-        List<SpecificationDto> specs = entity.getSpecifications().stream()
+        List<SpecificationDto> specs = entity.getSpecs().stream()
                 .map(MongoMapper::fromSpecificationDocument)
                 .toList();
         List<TagDto> tags = entity.getTags().stream()
@@ -51,7 +51,7 @@ public class ProductDocumentMapper {
                 dto.getCategory().getName() : null);
         entity.setBrand(dto.getBrand() != null ?
                 dto.getBrand().getName() : null);
-        entity.setSpecifications(dto.getSpecs() != null ?
+        entity.setSpecs(dto.getSpecs() != null ?
                 dto.getSpecs().stream().map(MongoMapper::toSpecificationDocument).toList() : Collections.emptyList());
         entity.setTags(dto.getTags() != null ?
                 dto.getTags().stream().map(MongoMapper::toTagDocument).toList() : Collections.emptyList());
