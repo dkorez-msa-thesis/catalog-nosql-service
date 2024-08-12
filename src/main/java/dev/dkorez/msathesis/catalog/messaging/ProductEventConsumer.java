@@ -1,9 +1,8 @@
-package dev.dkorez.msathesis.catalog.updater;
+package dev.dkorez.msathesis.catalog.messaging;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.dkorez.msathesis.catalog.mapper.ProductDocumentMapper;
-import dev.dkorez.msathesis.catalog.messaging.ProductEvent;
 import dev.dkorez.msathesis.catalog.document.ProductDocument;
 import dev.dkorez.msathesis.catalog.repository.ProductDocumentRepository;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -22,7 +21,7 @@ public class ProductEventConsumer {
     @Inject
     ProductDocumentRepository productDocumentRepository;
 
-    @Incoming("product-updates")
+    @Incoming("product-events")
     public void processUpdates(String event) {
         try {
             logger.info("incoming product-update: {}", event);
