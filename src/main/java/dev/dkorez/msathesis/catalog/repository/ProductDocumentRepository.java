@@ -13,8 +13,12 @@ import java.util.regex.Pattern;
 
 @ApplicationScoped
 public class ProductDocumentRepository {
+    private final MongoClient mongoClient;
+
     @Inject
-    MongoClient mongoClient;
+    public ProductDocumentRepository(MongoClient mongoClient) {
+        this.mongoClient = mongoClient;
+    }
 
     public List<ProductDocument> findAllProducts() {
         return getCollection().find().into(new ArrayList<>());

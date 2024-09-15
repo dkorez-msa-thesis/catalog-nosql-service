@@ -12,8 +12,12 @@ import java.util.List;
 
 @GraphQLApi
 public class ProductControllerGraphQL {
+    private final ProductDocumentService productDocumentService;
+
     @Inject
-    private ProductDocumentService productDocumentService;
+    public ProductControllerGraphQL(ProductDocumentService productDocumentService) {
+        this.productDocumentService = productDocumentService;
+    }
 
     @Query("products")
     public List<ProductGqlResponse> findProducts() {

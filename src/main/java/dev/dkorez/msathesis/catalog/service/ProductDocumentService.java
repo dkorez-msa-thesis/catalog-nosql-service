@@ -10,8 +10,12 @@ import java.util.List;
 
 @ApplicationScoped
 public class ProductDocumentService {
+    private final ProductDocumentRepository productDocumentRepository;
+
     @Inject
-    ProductDocumentRepository productDocumentRepository;
+    public ProductDocumentService(ProductDocumentRepository productDocumentRepository) {
+        this.productDocumentRepository = productDocumentRepository;
+    }
 
     public List<ProductDto> findAll() {
         return productDocumentRepository.findAllProducts().stream()

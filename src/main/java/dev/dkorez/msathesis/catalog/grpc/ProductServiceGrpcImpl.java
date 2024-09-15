@@ -13,8 +13,12 @@ import java.util.List;
 
 @GrpcService
 public class ProductServiceGrpcImpl implements ProductServiceGrpc {
+    private final ProductDocumentService productService;
+
     @Inject
-    private ProductDocumentService productService;
+    public ProductServiceGrpcImpl(ProductDocumentService productService) {
+        this.productService = productService;
+    }
 
     @Override
     @Blocking
